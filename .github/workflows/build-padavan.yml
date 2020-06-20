@@ -91,6 +91,8 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
         echo "CONFIG_FIRMWARE_INCLUDE_ARIA=n" >> .config #aria2 ~3.5M
         echo "CONFIG_FIRMWARE_INCLUDE_ARIA_WEB_CONTROL=n" >> .config #aria2 web ~0.7M
+        echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config #KMS 激活服务
+        echo "CONFIG_FIRMWARE_INCLUDE_TTYD=n" >> .config #TTYD终端
         #########################################################################################
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         #格式如下：
