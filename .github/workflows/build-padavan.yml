@@ -1,4 +1,4 @@
-#修改TNAME: K2P-5.0 中的K2P-5.0为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
+#修改TNAME: NEWIFI3 中的NEWIFI3为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
 name: Build Padavan
 
 on: 
@@ -52,16 +52,26 @@ jobs:
         ################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_MENTOHUST/d' .config #删除配置项MENTOHUST
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT/d' .config #删除配置项SCUTCLIENT
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config #删除配置项SS plus+
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SSOBFS/d' .config # simple-obfs混淆插件
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SSSERVER/d' .config #删除配置项SS server
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config #删除配置项SS plus+
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER/d' .config #删除配置项DNSFORWARDER
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ADBYBY/d' .config #删除配置项adbyby plus+
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' .config #删除配置项adbyby plus+
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPS/d' .config #删除配置项adbyby plus+
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_TUNSAFE/d' .config #删除配置项adbyby plus+
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_ALIDDNS/d' .config #删除配置项阿里DDNS
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPC/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_FRPS/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_TUNSAFE/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_ALIDDNS/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SMARTDNS/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_TROJAN/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_KOOLPROXY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_CADDY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_CADDYBIN/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SRELAY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_WYY/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_WYYBIN/d' .config
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_ZEROTIER/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ARIA/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ARIA_WEB_CONTROL/d' .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_VLMCSD/d' .config
@@ -104,7 +114,9 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >> .config #集成caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
         echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config #可以不集成
-        echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
+        echo "CONFIG_FIRMWARE_INCLUDE_WYY=n" >> .config #网易云解锁
+        echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> .config #网易云解锁GO版本执行文件
+        echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_ARIA=n" >> .config #aria2 ~3.5M
         echo "CONFIG_FIRMWARE_INCLUDE_ARIA_WEB_CONTROL=n" >> .config #aria2 web ~0.7M
         echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config #KMS 激活服务
@@ -125,10 +137,8 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_PARTED=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_DOGCOM=n" >> .config
         echo "CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n" >> .config
-        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #SS plus+
-        echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=y" >> .config #集成v2ray执行文件 ~3.8M
-        echo "CONFIG_FIRMWARE_INCLUDE_WYY=y" >> .config #网易云解锁
-        echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=y" >> .config #网易云解锁GO版本执行文件 ~4M
+        echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=y" >> .config
         #########################################################################################
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         #格式如下：
